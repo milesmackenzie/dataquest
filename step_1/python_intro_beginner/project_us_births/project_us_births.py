@@ -10,7 +10,7 @@ f = open("US_births_1994-2003_CDC_NCHS.csv", "r")
 csvread = f.read()
 data = csvread.split("\n")
 
-# Read csv file function
+# Read csv file
 
 def read_csv(string):
     final_lst = []
