@@ -2,7 +2,7 @@
 
 import csv
 
-f = open("nfl_suspensions_data.csv", "r")
+f = open("nfl-suspensions-data.csv", "r")
 nfl_suspensions = list(csv.reader(f))
 nfl_suspensions = nfl_suspensions[1:]
 
