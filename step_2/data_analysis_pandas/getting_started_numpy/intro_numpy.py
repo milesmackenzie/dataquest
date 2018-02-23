@@ -1,4 +1,4 @@
-# using np.array and .shape to produce tuples
+# using np.array to produce arrays and .shape to produce tuples
 
 import numpy as np
 
@@ -15,7 +15,7 @@ import numpy
 world_alcohol = numpy.genfromtxt("world_alcohol.csv", delimiter=",")
 print (type(world_alcohol))
 
-# using .dtype to find float64 for data type
+# using .dtype to show float64 for data type
 
 world_alcohol_dtype = world_alcohol.dtype
 print (world_alcohol_dtype)
@@ -36,7 +36,7 @@ third_country = world_alcohol[2,2]
 countries = world_alcohol[:,2]
 alcohol_consumption = world_alcohol[:,4]
 
-# selecting one whole demension and a slice of another in matrixes
+# selecting one whole demension and a slice of another in a matrix
 
 first_two_columns = world_alcohol[0:,0:2]
 first_ten_years = world_alcohol[0:10,0]
