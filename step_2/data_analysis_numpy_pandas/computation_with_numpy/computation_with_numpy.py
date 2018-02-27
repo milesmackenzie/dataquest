@@ -4,7 +4,6 @@
 import numpy
 
 world_alcohol = numpy.genfromtxt("world_alcohol.csv", dtype="U75", skip_header=1, delimiter=",")
-print (world_alcohol)
 
 
 # making comparisons accross array
@@ -17,7 +16,6 @@ years_1984 = world_alcohol[:,0] == "1984"
 
 country_is_algeria = world_alcohol[:,2] == "Algeria"
 country_algeria = world_alcohol[country_is_algeria,:]
-
 # selecting rows where column == 1986 and country == Algeria
 
 is_algeria_and_1986 = (world_alcohol[:,0] == "1986") & (world_alcohol[:,2] == "Algeria")
@@ -30,8 +28,6 @@ world_alcohol[replace_date, 0] = "2014"
 
 replace_wine = world_alcohol[:,3] == "Wine"
 world_alcohol[replace_wine, 3] = "Grog"
-
-print (world_alcohol)
 
 # replacing empty colums "" with "0"
 
@@ -47,18 +43,19 @@ alcohol_consumption = world_alcohol[:,4].astype(float)
 total_alcohol = alcohol_consumption.sum(axis=0)
 average_alcohol = alcohol_consumption.mean(axis=0)
 
-# creat matrix containing rows with 1986 and "Canada". Then extract the 5th
+# creat matrix containing rows with 1987 and "Canada". Then extract the 5th
 # column, replacing any "" with "0", converting to float() and summing the total.
 
 
-canada_1986 = (world_alcohol[:,0] == "1986") & (world_alcohol[:,2] == "Canada")
+canada_1987 = (world_alcohol[:,0] == "1987") & (world_alcohol[:,2] == "Canada")
 
-rows_with_canada_1986 = world_alcohol[canada_1986,:]
-canada_alcohol = rows_with_canada_1986[:,4]
+rows_with_canada_1987 = world_alcohol[canada_1987,:]
+canada_alcohol = rows_with_canada_1987[:,4]
 empty_strings = canada_alcohol == ""
 canada_alcohol[empty_strings] = "0"
 canada_alcohol = canada_alcohol.astype(float)
 total_canadian_drinking = canada_alcohol.sum()
+print (total_canadian_drinking)
 
 
 # finding alcohol totals for all countries in matrix
