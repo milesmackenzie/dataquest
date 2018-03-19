@@ -27,7 +27,7 @@ def clean_deaths(avengers):
 
 true_avengers['Deaths'] = true_avengers.apply(clean_deaths, axis=1)
 
-# Counting how many occurances where 'Years since joining' + 'Year' = 2015.
+# Counting how many occurances where 'Years since joining' + 'Year' is equal to 2015.
 
 joined_accuracy  = true_avengers[true_avengers['Year'] + true_avengers['Years since joining'] == 2015]
 joined_accuracy_count = len(joined_accuracy)
