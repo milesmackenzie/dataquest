@@ -1,0 +1,81 @@
+## 1. Listing files in current directory ##
+
+
+/home/dq$ ls -l
+total 6672
+-rwxr-xr-x 1 dq dq 2051577 Mar 27 17:37 Hud_2005.csv
+-rwxr-xr-x 1 dq dq 1874334 Mar 27 17:37 Hud_2007.csv
+-rwxr-xr-x 1 dq dq 2902856 Mar 27 17:37 Hud_2013.csv
+
+## 2. Dislpaying first 10 rows in each file ##
+
+/home/dq$ head -n 10 Hud_2005.csv
+AGE1,BURDEN,FMR,FMTBEDRMS,FMTBUILT,TOTSAL
+43,0.513,680,'3 3BR','1980-1989',20000
+44,0.2225915493,760,'4 4BR+','1980-1989',71000
+58,0.2178312657,680,'3 3BR','1980-1989',63000
+22,0.21745562129999998,519,'1 1BR','1980-1989',27040
+48,0.28285714289999997,600,'1 1BR','1980-1989',14000
+42,0.2922857143,788,'3 3BR','1980-1989',42000
+-9,-9.0,702,'2 2BR','1980-1989',-9
+23,0.14475,546,'2 2BR','1980-1989',48000
+51,0.2962,680,'3 3BR','1980-1989',58000
+
+/home/dq$ head -n 10 Hud_2007.csv
+AGE1,BURDEN,FMR,FMTBEDRMS,FMTBUILT,TOTSAL
+-9,-9.0,1048,'3 3BR','2000-2009',-9
+69,0.1207594937,1048,'3 3BR','2000-2009',0
+45,0.3683076923,757,'3 3BR','1980-1989',26000
+47,0.099419707,847,'4 4BR+','1980-1989',126000
+30,0.1340625,616,'2 2BR','1980-1989',42000
+50,0.2824,605,'1 1BR','1980-1989',15000
+44,0.0885517241,807,'3 3BR','1980-1989',145000
+-9,-9.0,778,'2 2BR','1980-1989',-9
+24,0.07925,599,'2 2BR','1980-1989',96000
+
+/home/dq$ head -n 10 Hud_2013.csv
+AGE1,BURDEN,FMR,FMTBEDRMS,FMTBUILT,TOTSAL
+82,0.35491926090000003,956,'2 2BR','2000-2009',0
+50,0.047527264699999995,1100,'4 4BR+','1980-1989',123000
+53,0.6027025095,1100,'4 4BR+','1980-1989',28000
+67,0.1039106145,949,'3 3BR','1980-1989',0
+26,0.094019035,737,'2 2BR','1980-1989',96900
+56,0.5564822846,657,'1 1BR','1980-1989',15000
+50,0.1998227609,988,'3 3BR','1980-1989',70001
+26,0.366,773,'2 2BR','1980-1989',20000
+60,0.1165841647,1125,'3 3BR','1980-1989',107000
+
+# Creating combined_hud.csv and appending header
+# row and the rest of rows from Hud_2005.read_csv.
+# Dislpaying first 10 rows of combined_hud.csv.
+
+/home/dq$ touch combined_hud.csv
+/home/dq$ head -1 Hud_2013.csv >> combined_hud.csv
+/home/dq$ wc -l Hud_2005.csv
+46854 Hud_2005.csv
+/home/dq$ tail -46853 Hud_2005.csv >> combined_hud.csv
+/home/dq$ head combined_hud.csv
+AGE1,BURDEN,FMR,FMTBEDRMS,FMTBUILT,TOTSAL
+43,0.513,680,'3 3BR','1980-1989',20000
+44,0.2225915493,760,'4 4BR+','1980-1989',71000
+58,0.2178312657,680,'3 3BR','1980-1989',63000
+22,0.21745562129999998,519,'1 1BR','1980-1989',27040
+48,0.28285714289999997,600,'1 1BR','1980-1989',14000
+42,0.2922857143,788,'3 3BR','1980-1989',42000
+-9,-9.0,702,'2 2BR','1980-1989',-9
+23,0.14475,546,'2 2BR','1980-1989',48000
+51,0.2962,680,'3 3BR','1980-1989',58000
+
+# Adding the rest of the non-header rows from other
+# csv files to combined_hud.csv.
+
+/home/dq$ wc -l Hud_2007.csv
+42730 Hud_2007.csv
+/home/dq$ tail -42729 Hud_2007.csv >> combined_hud.csv
+/home/dq$ wc -l Hud_2013.csv
+64536 Hud_2013.csv
+/home/dq$ tail -64535 Hud_2013.csv >> combined_hud.csv
+
+# Counting how many rows have 1980-1989.
+
+/home/dq$ grep "1980-1989" combined_hud.csv | wc -l
